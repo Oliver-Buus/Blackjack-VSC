@@ -25,7 +25,7 @@ public:
     Card(CardValue value, Suit suit, bool faceUp = true);
 
     // Methods
-    CardValue getValue();
+    CardValue getValue() const;
     int getValueAmount() const;
     Suit getSuit();
     bool isFaceUp();

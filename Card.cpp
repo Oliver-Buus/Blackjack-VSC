@@ -5,7 +5,7 @@ Card::Card(CardValue value, Suit suit, bool faceUp)
     suit(suit),
     faceUp(faceUp) {}
 
-CardValue Card::getValue() {
+CardValue Card::getValue() const {
     return value;
 }
 
