@@ -2,7 +2,8 @@
 #define CARD_H
 
 // Libraries
-#include <iostream>
+#include <string>
+using namespace std;
 
 // Enums card values
 enum class CardValue {
@@ -29,9 +30,7 @@ public:
     int getValueAmount() const;
     Suit getSuit();
     bool isFaceUp();
-
-    //
-    friend std::ostream& operator<<(std::ostream& os, const Card& card);
+    string toString();
 };
 
 #endif

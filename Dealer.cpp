@@ -1,8 +1,5 @@
 #include "headers/Dealer.h"
-#include <sstream>
 
-
-using namespace std;
 
 Dealer::Dealer() {}
 
@@ -16,22 +13,35 @@ void Dealer::clearHand() {
 
 int Dealer::getHandValue() {
     int value = 0;
+    int numberOfAces = 0;
+
     for (const Card& card : hand) {
         value += card.getValueAmount();
     }
+
+    numberOfAces = count_if(hand.begin(), hand.end(), [](const Card& card) {
+        return card.getValue() == CardValue::Ace;
+    }); // STL
+
+    if (value > 21 && numberOfAces > 0) {
+        value -= 10;
+        numberOfAces--;
+    }
+
     return value;
 }
 
 string Dealer::showHand() {
-    stringstream ss;
+    string str;
 
-    for (int i = 0; i < hand.size(); i++) {
-        if (i == hand.size() - 1) {
-            ss << hand.at(i) << '\n';
-        } else {
-            ss << hand.at(i) << ", ";
+        for (int i = 0; i < hand.size(); ++i) {
+        str += hand.at(i).toString();
+        if (i != hand.size() - 1) {
+            str += ", ";
         }
     }
 
-    return ss.str();    
+    str += '\n';
+
+    return str;    
 }

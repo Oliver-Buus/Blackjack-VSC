@@ -1,6 +1,4 @@
 #include "headers/Player.h"
-#include <sstream>
-#include <algorithm>
 using namespace std;
 
 Player::Player(string name)
@@ -36,17 +34,18 @@ int Player::getHandValue() {
 }
 
 string Player::showHand() {
-    stringstream ss;
+    string str;
 
-    for (int i = 0; i < hand.size(); i++) {
-        if (i == hand.size() - 1) {
-            ss << hand.at(i);
-        } else {
-            ss << hand.at(i) << ", ";
+        for (int i = 0; i < hand.size(); ++i) {
+        str += hand.at(i).toString();
+        if (i != hand.size() - 1) {
+            str += ", ";
         }
     }
 
-    return ss.str();    
+    str += '\n';
+
+    return str;    
 }
 
 int Player::getBalance() {

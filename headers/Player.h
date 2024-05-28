@@ -2,8 +2,6 @@
 #define PLAYER_H
 
 #include "Participant.h"
-#include <vector>
-#include "Card.h"
 #include <string>
 
 using namespace std;

@@ -2,8 +2,6 @@
 #define DEALER_H
 
 #include "Participant.h"
-#include <vector>
-#include "Card.h"
 
 using namespace std;
 

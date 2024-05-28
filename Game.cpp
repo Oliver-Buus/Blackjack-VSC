@@ -1,6 +1,7 @@
 #include "headers/Game.h"
 #include "headers/Deck.h"
 #include "headers/Dealer.h"
+#include <iostream>
 
 
 using namespace std;
@@ -115,7 +116,7 @@ void Game::dealerTurn() {
 void Game::hit(Participant& participant) {
     Card card = deck->drawCard();
     participant.addToHand(card);
-    cout << "Card drawn: " << card << '\n';
+    cout << "Card drawn: " << card.toString() << '\n';
 }
 
 Participant* Game::checkWinner() {

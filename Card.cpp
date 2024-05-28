@@ -38,32 +38,38 @@ bool Card::isFaceUp() {
     return faceUp;
 }
 
-std::ostream& operator<<(std::ostream& os, const Card& card) {
-    if (card.faceUp) {
-        switch (card.value) {
-            case CardValue::Two: os << "Two"; break;
-            case CardValue::Three: os << "Three"; break;
-            case CardValue::Four: os << "Four"; break;
-            case CardValue::Five: os << "Five"; break;
-            case CardValue::Six: os << "Six"; break;
-            case CardValue::Seven: os << "Seven"; break;
-            case CardValue::Eight: os << "Eight"; break;
-            case CardValue::Nine: os << "Nine"; break;
-            case CardValue::Ten: os << "Ten"; break;
-            case CardValue::Jack: os << "Jack"; break;
-            case CardValue::Queen: os << "Queen"; break;
-            case CardValue::King: os << "King"; break;
-            case CardValue::Ace: os << "Ace"; break;
+string Card::toString() {
+    string str;
+
+    if (faceUp) {
+        switch (value) {
+            case CardValue::Two: str += "Two"; break;
+            case CardValue::Three: str += "Three"; break;
+            case CardValue::Four: str += "Four"; break;
+            case CardValue::Five: str += "Five"; break;
+            case CardValue::Six: str += "Six"; break;
+            case CardValue::Seven: str += "Seven"; break;
+            case CardValue::Eight: str += "Eight"; break;
+            case CardValue::Nine: str += "Nine"; break;
+            case CardValue::Ten: str += "Ten"; break;
+            case CardValue::Jack: str += "Jack"; break;
+            case CardValue::Queen: str += "Queen"; break;
+            case CardValue::King: str += "King"; break;
+            case CardValue::Ace: str += "Ace"; break;
         }
-        os << " of ";
-        switch (card.suit) {
-            case Suit::Hearts: os << "Hearts"; break;
-            case Suit::Diamonds: os << "Diamonds"; break;
-            case Suit::Clubs: os << "Clubs"; break;
-            case Suit::Spades: os << "Spades"; break;
+        
+        str += " of ";
+
+        switch (suit) {
+            case Suit::Hearts: str += "Hearts"; break;
+            case Suit::Diamonds: str += "Diamonds"; break;
+            case Suit::Clubs: str += "Clubs"; break;
+            case Suit::Spades: str += "Spades"; break;            
         }
+
     } else {
-        os << "Face Down";
+        str = "Face down";
     }
-    return os;
+
+    return str;
 }
