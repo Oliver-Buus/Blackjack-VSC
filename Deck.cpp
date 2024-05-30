@@ -3,8 +3,7 @@
 #include <random>
 #include <ctime>
 
-Deck::Deck() {
-
+Deck::Deck() {    
     for (int i = 0; i <= static_cast<int>(CardValue::Ace); i++) {
         for (int j = 0; j <= static_cast<int>(Suit::Spades); j++) {
             cards.push_back(Card(static_cast<CardValue>(i), static_cast<Suit>(j)));       

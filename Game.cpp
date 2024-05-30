@@ -65,12 +65,12 @@ void Game::startRound() {
     player->addToHand(deck->drawCard());
     player->addToHand(deck->drawCard());
 
-    cout << "Hand of " << player->getName() << ": " << player->showHand() << '\n';
-    cout << "Hand of dealer: " << dealer->showHand() << '\n';
+    cout << "Hand of " << player->getName() << ": " << player->showHand() << " (" << player->getHandValue() << ")" << '\n';
+    cout << "Hand of dealer: " << dealer->showHand() << " (" << dealer->getHandValue() << ")" << '\n';
 }
 
 Deck* Game::createDeck() {
-    Deck* deck = new Deck();
+    deck = new Deck();
     deck->shuffle();
 
     return deck;
@@ -95,7 +95,7 @@ void Game::playerTurn() {
 
     if (choice == 1) {
         hit(*player);
-        cout << "Your hand: " << player->showHand() << '\n';
+        cout << "Your hand: " << player->showHand() << " (" << player->getHandValue() << ")" << '\n';
         if (player->getHandValue() >= 21) {
             checkWinner();
         } else playerTurn();
@@ -108,7 +108,7 @@ void Game::playerTurn() {
 void Game::dealerTurn() {
     while (dealer->getHandValue() < 17) {
         hit(*dealer);
-        cout << "Dealers hand: " << dealer->showHand() << '\n';
+        cout << "Dealers hand: " << dealer->showHand() << " (" << dealer->getHandValue() << ")" << '\n';
     }
     checkWinner();
 }
@@ -120,6 +120,14 @@ void Game::hit(Participant& participant) {
 }
 
 Participant* Game::checkWinner() {
+    cout << "------------------------------" << '\n';
+    cout << "|        CHECK WINNER        |" << '\n';
+    cout << "------------------------------" << '\n';
+    cout << "Dealers hand: " << dealer->showHand() << " (" << dealer->getHandValue() << ")" << '\n';
+    cout << "Your hand: " << player->showHand() << " (" << player->getHandValue() << ")" << '\n';
+
+
+
     int playerHandValue = player->getHandValue();
     int dealerHandValue = dealer->getHandValue();
 
